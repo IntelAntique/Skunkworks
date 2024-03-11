@@ -30,7 +30,7 @@ def read_GPT():
     alloys = []
     reading_alloys = False
     # Open the text file
-    with open('Glasscriticalcastingradius_2024_02_10-030115.txt', 'r') as file:
+    with open('Metallicglasscriticalcastingdiameter_2024_03_11-012720.txt', 'r') as file:
         lines = file.readlines()
 
         pattern = r'\|\s*([\w\d.]+)\s*\|\s*([\d.]+)\s*\|'
@@ -43,7 +43,6 @@ def read_GPT():
                 if line.startswith('|'):  # Check if the line starts with '|'
                     match = re.match(pattern, line)  # Match the pattern in the line
                     if match:
-                        print(match)
                         material, value = match.group(1), match.group(2)  # Extract material and value
                         alloys.append((material, value))  # Append to the alloys list
                 else:
