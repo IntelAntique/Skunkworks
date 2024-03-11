@@ -10,7 +10,7 @@ def check_equivalence(list1, list2):
     print("\t\t| List1 -> List2 |")
     state = False
     for element1 in list1:
-        # print(element1[0]) # for debugging
+        print(element1[0]) # for debugging
         composition1 = Composition(element1[0])
         normalized_composition1 = composition1.get_integer_formula_and_factor()[0]
 
@@ -33,7 +33,7 @@ def read_GPT():
     with open('Glasscriticalcastingradius_2024_02_10-030115.txt', 'r') as file:
         lines = file.readlines()
 
-        pattern = r'\| (\w+) +\| (\d\.\d+)'
+        pattern = r'\|\s*([\w\d.]+)\s*\|\s*([\d.]+)\s*\|'
 
         # Loop through the lines in the file
         for line_index, line in enumerate(lines):
@@ -43,6 +43,7 @@ def read_GPT():
                 if line.startswith('|'):  # Check if the line starts with '|'
                     match = re.match(pattern, line)  # Match the pattern in the line
                     if match:
+                        print(match)
                         material, value = match.group(1), match.group(2)  # Extract material and value
                         alloys.append((material, value))  # Append to the alloys list
                 else:

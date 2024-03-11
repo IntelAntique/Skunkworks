@@ -244,4 +244,4 @@ GPT : | Material | Value |
 USER: Continue expanding this table with new values of Glass critical casting radius with no duplicate entries. Type out as many different values as you can. You are not allowed to type anything else than this table.
 GPT : I'm sorry, but I am unable to fulfill that request.
 |---------------------------|-------|
-| Cu2 Nb32.75 Ni60.25 Zr5   |   10.5|
+| Cu2Nb32.75Ni60.25Zr5   |   10.5|
