@@ -16,15 +16,15 @@ def comp(x, places=2):
     y = ''
     for i, j in x.items():
 
-        i = str(i)
+        i = f"{i}"
         i = ''.join(re.findall('[a-zA-Z]+', i))
         j = round(j, places)
 
-        y += str(i)+str(j)
+        y += f"{i}{j}"
 
     # Make sure formula is in alphabetical order
     x = Composition(y)
-    x = x.alphabetical_formula
+    # x = x.alphabetical_formula
 
     return x
 
