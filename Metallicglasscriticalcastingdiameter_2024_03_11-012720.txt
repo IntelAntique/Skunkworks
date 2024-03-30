@@ -1,6 +1,7 @@
 USER: I want Metallic glass critical casting diameter values for all unique materials. This should be a table consisting of 2 columns: material, value. The materials have to be typed as unique chemical compositions consisting of chemical element abbreviations and numbers only (e.g. GaAs, but not Gallium Arsenide). The values shall be in scientific values only. Type out as many different values as you can. You are not allowed to type anything else than this table.
 GPT : | Material | Value    |
 |----------|----------|
+| Ag1Al19.8Co19.8Cu4.95Zr54.45 | 10.0 mm |
 | Zr41.2Ti13.8Cu12.5Ni10Be22.5 | 2.5 mm |
 | Pd40Ni40P20 | 5 mm |
 | Zr52.5Cu17.9Ni14.6Al10Ti5 | 2.5 mm |

@@ -28,26 +28,26 @@ def comp(x, places=2):
 
     return x
 
+if False:
+    df = './MDF_DMREF_Metallic_Glasses_v7.csv'
+    cut = -4
 
-df = './MDF_DMREF_Metallic_Glasses_v7.csv'
-cut = -4
+    df = pd.read_csv(df)
+    df.rename(columns={'Composition': 'comp'}, inplace=True)
+    df.rename(columns={'Rc_[K/s]': 'Rc'}, inplace=True)
 
-df = pd.read_csv(df)
-df.rename(columns={'Composition': 'comp'}, inplace=True)
-df.rename(columns={'Rc_[K/s]': 'Rc'}, inplace=True)
+    df = df[['comp', 'Rc']]
 
-df = df[['comp', 'Rc']]
+    df.dropna(inplace=True)
+    df = df.groupby('comp').mean().reset_index()
 
-df.dropna(inplace=True)
-df = df.groupby('comp').mean().reset_index()
+    df['log10(Rc)'] = df['Rc'].apply(np.log10)
+    df.drop('Rc', axis=1, inplace=True)
 
-df['log10(Rc)'] = df['Rc'].apply(np.log10)
-df.drop('Rc', axis=1, inplace=True)
+    df['system'] = df['comp'].apply(lambda x: ''.join(sorted([str(i) for i in Composition(x).elements])))
 
-df['system'] = df['comp'].apply(lambda x: ''.join(sorted([str(i) for i in Composition(x).elements])))
+    df = df[df['log10(Rc)'] > cut]
 
-df = df[df['log10(Rc)'] > cut]
+    df.to_csv('./target.csv', index=False)
 
-df.to_csv('./target.csv', index=False)
-
-print(df)
+    print(df)
