@@ -5,8 +5,11 @@ from clean import comp
 from compare import is_within_0_5
 
 
-def check_equivalence(predictions, database):
+def check_equivalence(predictions, database, file=None):
     duplicates = set()
+    if file:
+        file.write("Equivalence:\t| Predictions -> Database |\n")
+
     print("Equivalence:\t| Predictions -> Database |")
     state = False
     for element1, value1 in predictions:
@@ -23,7 +26,9 @@ def check_equivalence(predictions, database):
                 if element1[0] in duplicates:
                     continue
                 duplicates.add(element1[0])
-                print(f"{element1} and {element2}")
+                if file:
+                    file.write(f"({element1}, {value1}) -> ({element2}, {value2})\n")
+                print(f"{element1} {value1} and {element2} {value2}")
                 # If you only want to check if any equivalence exists, you can return True here
                 state = True
     # If no equivalence is found after looping through both lists
@@ -58,7 +63,8 @@ def main():
     # list2 = df.iloc[:, 0].tolist()
     df = pd.read_csv("database.csv")
     database = df.values.tolist()
-    print(check_equivalence(predictions, database))
+    f = open("Equivalence.txt", "a")
+    print(check_equivalence(predictions, database, file=f))
 
 
 if __name__ == "__main__":
